@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Add new Student to Course</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table, td, th {
+            border: 1px solid #000000;
+            padding: 3px 2px;
+        }
+
+        section {
+            float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+
+        aside {
+            float: right;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Student Enrollment - Select the Student </h1>
+</header>
+<section>
+    <h2>Select the student to enroll:</h2>
+    <form method="post" action="/StudentEnrollmentSummary" th:action="@{/AddStudent}">
+        <a href='/createStudent' type='button'>Create New Student</a> <br/> <br/>
+        <th:block th:each="student : ${students}">
+            <input type="radio" name="student" th:value="${student.getUsername()}"
+                   th:text="${student.getName() + ' ' + student.getSurname() }">
+            </br>
+        </th:block>
+        <input type="submit" value="Submit">
+    </form>
+    <br/>
+
+
+</section>
+<aside>
+    <table>
+        <tr>
+            <th colspan="2">
+                Your Enrollment Status
+            </th>
+        </tr>
+        <tr>
+            <td><b>Course Id</b></td>
+            <td></td>
+        </tr>
+    </table>
+</aside>
+
+</body>
+</>
